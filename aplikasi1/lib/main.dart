@@ -11,12 +11,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "Hallo Widget",
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(
-          appBar: AppBar(title: const Text("Adrian Suparto")), //Appbar
-          body: const Center(
-            child: Text("Hallo Adrian"),
-          ),
-        ));
+        theme: ThemeData(primarySwatch: Colors.red),
+        home: FirstScreen());
+  }
+}
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Adrian")), //Appbar
+      body: const Center(
+        child: Text("Hallo Adrian"),
+      ),
+    );
   }
 }
