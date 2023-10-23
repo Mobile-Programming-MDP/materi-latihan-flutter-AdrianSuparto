@@ -11,11 +11,12 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Detail Header
+            // DetailHeader
             Stack(
               children: [
-                //Image Utama
+                // image utama
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: ClipRRect(
@@ -28,8 +29,7 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                //Tombol Back Utama
+                // tombol back kustom
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -42,60 +42,58 @@ class DetailScreen extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-
-            //Detail Info
+            // DetailInfo
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-                  //Info yang di atas (nama_candi dan tombol favorite)
+// info atas (nama candi dan tombol favorit
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         candi.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.favorite_border),
+                        icon: const Icon(Icons.favorite_border),
                       )
                     ],
                   ),
-
-                  //Info yang di tengah(lokasi, dibangun, dan tipe)
-                  SizedBox(
+// info tengah (lokasi, dibangun, tipe)
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.place,
                         color: Colors.red,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 70,
                         child: Text(
                           'Lokasi',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(
@@ -105,20 +103,18 @@ class DetailScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_month,
                         color: Colors.blue,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 70,
                         child: Text(
                           'Dibangun',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(': ${candi.built}'),
@@ -126,14 +122,14 @@ class DetailScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.house,
                         color: Colors.green,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 70,
                         child: Text(
                           'Tipe',
@@ -145,36 +141,31 @@ class DetailScreen extends StatelessWidget {
                       Text(': ${candi.type}'),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Divider(
                     color: Colors.deepPurple.shade100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-
-                  //Info di bawah (deskripsi)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          candi.description,
-                          style: TextStyle(
-                            fontSize: 12,
-                            height: 2, // Sesuaikan dengan kebutuhan Anda
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                  // info bawah (deskripsi)
+                  const Text(
+                    'Deskripsi',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text(candi.description),
                 ],
               ),
             ),
-
-            //DetailGallery
+            // DetailGallery
             Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
@@ -183,14 +174,14 @@ class DetailScreen extends StatelessWidget {
                   Divider(
                     color: Colors.deepPurple.shade100,
                   ),
-                  Text(
+                  const Text(
                     'Galeri',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SizedBox(
@@ -200,16 +191,17 @@ class DetailScreen extends StatelessWidget {
                       itemCount: candi.imageUrls.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: EdgeInsets.only(left: 8),
+                          padding: const EdgeInsets.only(right: 8),
                           child: GestureDetector(
                             onTap: () {},
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: Colors.deepPurple.shade100,
-                                    width: 2,
-                                  )),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: Colors.deepPurple.shade100,
+                                  width: 2,
+                                ),
+                              ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: CachedNetworkImage(
@@ -223,7 +215,7 @@ class DetailScreen extends StatelessWidget {
                                     color: Colors.deepPurple[50],
                                   ),
                                   errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
+                                      const Icon(Icons.error),
                                 ),
                               ),
                             ),
@@ -232,10 +224,10 @@ class DetailScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
-                  Text(
+                  const Text(
                     'Tap untuk memperbesar',
                     style: TextStyle(
                       fontSize: 12,
@@ -244,10 +236,39 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
+      /*body: Column(
+        children: [
+          Stack(
+            children: [
+              //Image Utama
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(candi.imageAsset,
+                      width: double.infinity, height: 300, fit: BoxFit.cover),
+                ),
+              ),
+              //Tombol Back Custom
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurple[100]?.withOpacity(0.8),
+                      shape: BoxShape.circle),
+                  child: IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+                ),
+              )
+            ],
+          )
+        ],
+      ),*/
     );
   }
 }
