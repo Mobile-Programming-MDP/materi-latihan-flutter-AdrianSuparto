@@ -98,6 +98,9 @@ class _MainScreenState extends State<MainScreen> {
               label: 'Profile',
             ),
           ],
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.deepPurple,
+          showUnselectedLabels: true,
         ),
       ),
     );
