@@ -13,10 +13,10 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // DetailHeader
+            //Detail Header
             Stack(
               children: [
-                // image utama
+                //Image Utama
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: ClipRRect(
@@ -29,7 +29,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // tombol back kustom
+
+                //Tombol Back Custom
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -41,7 +42,9 @@ class DetailScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(
                         Icons.arrow_back,
                       ),
@@ -50,7 +53,8 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            // DetailInfo
+
+            //Detail Info
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -59,7 +63,8 @@ class DetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-// info atas (nama candi dan tombol favorit
+
+                  //info di bagian atas (nama candi dan tombol favorite)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -76,7 +81,8 @@ class DetailScreen extends StatelessWidget {
                       )
                     ],
                   ),
-// info tengah (lokasi, dibangun, tipe)
+
+                  //info di bagian tengah (lokasi, dibangun, tipe)
                   const SizedBox(
                     height: 16,
                   ),
@@ -150,7 +156,7 @@ class DetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  // info bawah (deskripsi)
+                  // info di bagian bawah (deskripsi)
                   const Text(
                     'Deskripsi',
                     style: TextStyle(
@@ -165,7 +171,8 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // DetailGallery
+
+            //Detail Gallery
             Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
@@ -240,35 +247,6 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      /*body: Column(
-        children: [
-          Stack(
-            children: [
-              //Image Utama
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(candi.imageAsset,
-                      width: double.infinity, height: 300, fit: BoxFit.cover),
-                ),
-              ),
-              //Tombol Back Custom
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple[100]?.withOpacity(0.8),
-                      shape: BoxShape.circle),
-                  child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-                ),
-              )
-            ],
-          )
-        ],
-      ),*/
     );
   }
 }
