@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wisata_candi/screens/signInScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -9,45 +9,54 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _namaController = TextEditingController();
+  final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  String _errorText = "";
+  String _errorText = '';
+
   bool _obscurePassword = true;
 
-  //TODO: 1 membuat fungsi _signUp
-  void _signUp() {
-    final String name = _nameController.text.trim();
-    final String username = _usernameController.text.trim();
+//TODO: 1 Membuat metode _signUp
+  void _signUp() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String name = _namaController.text.trim();
+    final String username = _userController.text.trim();
     final String password = _passwordController.text.trim();
 
     if (password.length < 8 ||
         !password.contains(RegExp(r'[A-Z]')) ||
         !password.contains(RegExp(r'[a-z]')) ||
         !password.contains(RegExp(r'[0-9]')) ||
-        !password.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
+        !password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       setState(() {
         _errorText =
-            'Minimal 8 Karakter, kombinasi [A-Z], [a-z], [0-9],[!@#\$%^&*(),.?":{}|<>]';
+            'Minimal 8 karakter, kombinasi [A-Z], [a-z], [0-9], [!@#\\\$%^&*(),.?":{}|<>]';
       });
-    } else {
-      setState(() {
-        _errorText = "";
-      });
+      return;
     }
+    //simpan data pengguna di SharedPreferences
+    prefs.setString('fullname', name);
+    prefs.setString('username', username);
+    prefs.setString('password', password);
 
-    print('* Sign Up berhasil! ');
+    //buat navigasi ke SignInScreen
+    Navigator.pushReplacementNamed(context, '/signin');
+
+    print('*** Sign Up berhasil!');
+    print('Nama: $name');
     print('Nama Pengguna: $username');
     print('Password: $password');
   }
 
-  //TODO: 2 membuat fungsi dispose
+//TODO: 2 Mmembuat metode dispose
   @override
   void dispose() {
-    _nameController.dispose();
-    _usernameController.dispose();
+    //TODO: implement dispose
+    _namaController.dispose();
+    _userController.dispose();
     _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,48 +75,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-                    hintText: 'Masukkan Nama Anda',
-                  ),
+                  controller: _namaController,
+                  textCapitalization: TextCapitalization.words,
+                  decoration: const InputDecoration(
+                      labelText: "Nama", border: OutlineInputBorder()),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  controller: _usernameController,
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                    hintText: 'Masukkan Username',
-                    errorText: _errorText.isNotEmpty ? _errorText : null,
-                  ),
+                  controller: _userController,
+                  textCapitalization: TextCapitalization.words,
+                  decoration: const InputDecoration(
+                      labelText: "Nama Pengguna", border: OutlineInputBorder()),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Masukkan Password',
+                    labelText: 'Kata Sandi',
                     errorText: _errorText.isNotEmpty ? _errorText : null,
                     border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscurePassword
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                      ),
                       onPressed: () {
                         setState(() {
                           _obscurePassword = !_obscurePassword;
                         });
                       },
+                      icon: Icon(_obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
                     ),
                   ),
+                  obscureText: _obscurePassword,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 ElevatedButton(
-                  onPressed: _signUp,
-                  child: Text('Sign Up'),
-                ),
+                    onPressed: _signUp, child: const Text("Sign Up")),
               ],
             )),
           ),
