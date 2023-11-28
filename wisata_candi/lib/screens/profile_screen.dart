@@ -17,10 +17,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void signIn() {
     // setState((){
-    //  isSignedIn = true;
-    //  fullName = 'Christian Bautista';
-    //  userName = 'christianb';
-    //  favoriteCandiCount = 2;
+    // isSignedIn = true;
+    // fullName = 'Shela';
+    // userName = 'shelamdp';
+    // favoriteCandiCount = 2;
     // });
     Navigator.pushNamed(context, '/signin');
   }

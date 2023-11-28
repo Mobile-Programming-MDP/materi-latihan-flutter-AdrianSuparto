@@ -69,6 +69,7 @@ class _MainScreenState extends State<MainScreen> {
     FavoriteScreen(),
     ProfileScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

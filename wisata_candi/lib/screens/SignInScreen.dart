@@ -106,9 +106,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             // TODO: 7. Pasang ElevotedButton Sign In
             SizedBox(height: 20),
-            // TextButton(
-            //   onPressed: (){},
-            //   child: Text('Sign In')),
+            TextButton(onPressed: () {}, child: Text('Sign In')),
             // TODO: 8. Pasang TextButton Sign Up
             SizedBox(height: 10),
             //...
