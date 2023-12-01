@@ -35,13 +35,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
       return;
     }
-
-    //Simpan Data Pengguna di SharedPreferences
+    //simpan data pengguna di SharedPreferences
     prefs.setString('fullname', name);
     prefs.setString('username', username);
     prefs.setString('password', password);
 
-    //Buat Navigasi ke SignInScreen
+    //buat navigasi ke SignInScreen
     Navigator.pushReplacementNamed(context, '/signin');
 
     print('*** Sign Up berhasil!');
@@ -50,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     print('Password: $password');
   }
 
-//TODO: 2. Membuat Metode Dispose
+//TODO: 2 Mmembuat metode dispose
   @override
   void dispose() {
     //TODO: implement dispose

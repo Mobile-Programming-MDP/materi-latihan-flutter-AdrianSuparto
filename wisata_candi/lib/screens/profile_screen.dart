@@ -18,8 +18,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void signIn() {
     // setState((){
     // isSignedIn = true;
-    // fullName = 'Shela';
-    // userName = 'shelamdp';
+    // fullName = 'adriam';
+    // userName = 'adrian';
     // favoriteCandiCount = 2;
     // });
     Navigator.pushNamed(context, '/signin');
@@ -82,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     ProfileInfoItem(
                       icon: Icons.lock,
-                      label: 'Pengguna',
+                      label: 'User',
                       value: userName,
                       iconColor: Colors.amber,
                     ),
@@ -138,7 +138,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 elevation: 5),
                           )
                         : TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/signin');
+                            },
                             child: Text('Sign In'),
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.amber,
